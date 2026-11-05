@@ -9,6 +9,7 @@ node_modules/
 
 # Local tooling
 .claude/
+.vscode/
 
 # OS files
 .DS_Store

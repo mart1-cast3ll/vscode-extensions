@@ -15,7 +15,8 @@ $target = Join-Path $outPath "$($pkg.name)-$($pkg.version).vsix"
 if (Test-Path $target) { Remove-Item $target }
 
 $files = @('package.json', 'README.md', 'CHANGELOG.md')
-$files += Get-ChildItem -Recurse -File (Join-Path $root 'src'), (Join-Path $root 'media'), (Join-Path $root 'docs') |
+$dirs = @('src', 'media', 'docs') | ForEach-Object { Join-Path $root $_ } | Where-Object { Test-Path $_ }
+$files += Get-ChildItem -Recurse -File $dirs |
   ForEach-Object { $_.FullName.Substring($root.Length + 1) }
 
 $contentTypes = @'
