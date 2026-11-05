@@ -5,6 +5,7 @@ Visual Studio Code extensions by [mart1-cast3ll](https://github.com/mart1-cast3l
 | Extension | Description | Latest |
 | --- | --- | --- |
 | [SVG Layers Editor](svg-layers-editor/) | Open any SVG as layers: move, rotate, scale, regroup and recolor, with a linked code view. | [v0.2.0](https://github.com/mart1-cast3ll/vscode-extensions/releases/tag/svg-layers-editor-v0.2.0) |
+| [Markdown Live Editor](markdown-live-editor/) | Read Markdown as a rendered page and edit any block in place. | [v0.1.0](https://github.com/mart1-cast3ll/vscode-extensions/releases/tag/markdown-live-editor-v0.1.0) |
 
 ## Installing an extension
 

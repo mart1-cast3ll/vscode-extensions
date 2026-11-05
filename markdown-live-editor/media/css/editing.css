@@ -1,0 +1,23 @@
+.block { position: relative; margin: 0 -14px; padding: 4px 14px; border-radius: 8px; cursor: text; transition: background .12s, box-shadow .12s; }
+.block:hover { background: rgba(255, 255, 255, .03); box-shadow: inset 2px 0 0 rgba(28, 176, 246, .5); }
+.block a, .block input.task, .block button { cursor: pointer; }
+
+.gap { position: relative; height: 14px; margin: 0 -14px; }
+.gap .add {
+  position: absolute; left: -12px; top: 50%; width: 20px; height: 20px; margin-top: -10px; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%; line-height: 1; font-size: 14px; color: var(--muted);
+  background: var(--raise); cursor: pointer; opacity: 0; transition: opacity .12s, color .12s, border-color .12s;
+}
+.gap:hover .add { opacity: 1; }
+.gap .add:hover { color: #fff; border-color: var(--accent); background: var(--accent); }
+.gap:hover::after { content: ''; position: absolute; left: 14px; right: 14px; top: 50%; height: 1px; background: rgba(28, 176, 246, .35); }
+
+.block.editing { cursor: auto; background: #1d1f24; box-shadow: inset 0 0 0 1px var(--accent); padding: 10px 14px 6px; }
+.block-input {
+  display: block; width: 100%; min-height: 28px; resize: none; overflow: hidden; padding: 0; border: 0; outline: none; tab-size: 2;
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #e6edf3; background: transparent;
+}
+.edit-hint { margin-top: 6px; font-size: 11px; color: var(--dim); text-align: right; }
+
+.empty { padding: 60px 20px; border: 1px dashed var(--line); border-radius: 12px; text-align: center; color: var(--muted); cursor: text; }
+.empty:hover { border-color: var(--accent); color: var(--text); }

@@ -1,0 +1,69 @@
+{
+  "name": "markdown-live-editor",
+  "displayName": "Markdown Live Editor",
+  "description": "Read Markdown as a rendered page and edit it in place: click any block to change it, toolbar formatting, clickable task lists and an outline.",
+  "version": "0.1.0",
+  "publisher": "mart1-cast3ll",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mart1-cast3ll/vscode-extensions.git",
+    "directory": "markdown-live-editor"
+  },
+  "homepage": "https://github.com/mart1-cast3ll/vscode-extensions/tree/main/markdown-live-editor#readme",
+  "bugs": {
+    "url": "https://github.com/mart1-cast3ll/vscode-extensions/issues"
+  },
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "markdown",
+    "preview",
+    "editor",
+    "wysiwyg"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "markdownLive.editor",
+        "displayName": "Markdown Live Editor",
+        "selector": [
+          { "filenamePattern": "*.md" },
+          { "filenamePattern": "*.markdown" }
+        ],
+        "priority": "option"
+      }
+    ],
+    "commands": [
+      {
+        "command": "markdownLive.open",
+        "title": "Open in Markdown Live Editor",
+        "category": "Markdown",
+        "icon": "$(book)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "markdownLive.open",
+          "when": "resourceLangId == markdown && activeCustomEditorId != markdownLive.editor",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "markdownLive.open",
+          "when": "resourceLangId == markdown",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}
