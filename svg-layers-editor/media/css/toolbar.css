@@ -1,0 +1,38 @@
+.top { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 6px 8px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.tools { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.sep { width: 1px; height: 20px; margin: 0 6px; background: var(--line); }
+
+.ib {
+  position: relative; display: grid; place-items: center; width: 32px; height: 32px; padding: 0;
+  border: 0; border-radius: 7px; background: transparent; color: #c9cbd1; cursor: pointer; transition: background .12s, color .12s;
+}
+.ib.sm { width: 26px; height: 26px; border-radius: 6px; }
+.ib svg { width: 18px; height: 18px; }
+.ib.sm svg { width: 15px; height: 15px; }
+.ib:hover:not(:disabled) { background: var(--hover); color: #fff; }
+.ib:active:not(:disabled) { transform: translateY(1px); }
+.ib:disabled { opacity: .3; cursor: default; }
+.ib.on { background: var(--accent-soft); color: var(--accent); }
+.ib.danger:hover:not(:disabled) { color: var(--danger); }
+.ib.dirty::before {
+  content: ''; position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 2px var(--panel);
+}
+.ib:focus-visible, .row:focus-visible, .swatch:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+[data-tip]::after {
+  content: attr(data-tip); position: absolute; top: calc(100% + 6px); left: 50%; z-index: 50;
+  padding: 5px 9px; border-radius: 6px; white-space: nowrap; font-size: 12px; font-weight: 500;
+  background: #0e0f11; color: #f0f0f2; border: 1px solid #3a3c42; box-shadow: 0 6px 18px rgba(0, 0, 0, .5);
+  opacity: 0; pointer-events: none; transform: translate(-50%, -3px); transition: opacity .12s, transform .12s;
+}
+[data-tip]:hover::after { opacity: 1; transform: translate(-50%, 0); transition-delay: .3s; }
+.tip-start::after { left: 0; transform: translateY(-3px); }
+.tip-start:hover::after { transform: none; }
+.tip-end::after { left: auto; right: 0; transform: translateY(-3px); }
+.tip-end:hover::after { transform: none; }
+
+.crumbs { flex: 1; min-width: 0; display: flex; justify-content: center; align-items: center; gap: 2px; overflow: hidden; white-space: nowrap; font-size: 12px; color: var(--dim); }
+.crumbs button { padding: 3px 6px; border: 0; border-radius: 5px; background: none; color: var(--accent); cursor: pointer; }
+.crumbs button:hover { background: var(--hover); }
+.crumbs .cur { padding: 3px 6px; overflow: hidden; text-overflow: ellipsis; font-weight: 600; color: var(--text); }

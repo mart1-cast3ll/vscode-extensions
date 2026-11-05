@@ -1,0 +1,75 @@
+{
+  "name": "svg-layers-editor",
+  "displayName": "SVG Layers Editor",
+  "description": "Edit any SVG visually: layers panel, move/rotate/scale, grouping, fill color and a linked code view.",
+  "version": "0.2.0",
+  "publisher": "mart1-cast3ll",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mart1-cast3ll/vscode-extensions.git",
+    "directory": "svg-layers-editor"
+  },
+  "homepage": "https://github.com/mart1-cast3ll/vscode-extensions/tree/main/svg-layers-editor#readme",
+  "bugs": {
+    "url": "https://github.com/mart1-cast3ll/vscode-extensions/issues"
+  },
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "svg",
+    "editor",
+    "layers",
+    "vector"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "svgLayers.editor",
+        "displayName": "SVG Layers Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.svg"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "commands": [
+      {
+        "command": "svgLayers.open",
+        "title": "Open in SVG Layers Editor",
+        "category": "SVG",
+        "icon": "$(layers)"
+      },
+      {
+        "command": "svgLayers.openFile",
+        "title": "Open an SVG in SVG Layers Editor…",
+        "category": "SVG"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "svgLayers.open",
+          "when": "resourceExtname == .svg && activeCustomEditorId != svgLayers.editor",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "svgLayers.open",
+          "when": "resourceExtname == .svg",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}

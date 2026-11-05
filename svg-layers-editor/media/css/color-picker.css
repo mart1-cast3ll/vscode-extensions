@@ -1,0 +1,18 @@
+.pop {
+  position: fixed; z-index: 60; display: flex; flex-direction: column; gap: 12px; width: 216px; padding: 14px; border-radius: 12px;
+  background: var(--raise); border: 1px solid #3c3f46; box-shadow: 0 14px 40px rgba(0, 0, 0, .6);
+}
+.wheel-wrap { position: relative; align-self: center; width: 188px; height: 188px; cursor: crosshair; touch-action: none; }
+#wheel { display: block; width: 188px; height: 188px; }
+.dot {
+  position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; border: 3px solid #fff; pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .5);
+}
+input[type=range].val { height: 12px; border-radius: 6px; }
+input[type=range].val::-webkit-slider-thumb { width: 18px; height: 18px; border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .5), 0 1px 4px rgba(0, 0, 0, .5); }
+.pop-row { display: flex; align-items: center; gap: 8px; }
+.prev { flex: 0 0 auto; width: 32px; height: 28px; border-radius: 7px; border: 1px solid var(--line); }
+.pop-sub { margin-bottom: -4px; font-size: 11px; color: var(--muted); }
+.swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; }
+.swatches button { aspect-ratio: 1; padding: 0; border-radius: 5px; border: 1px solid rgba(255, 255, 255, .18); cursor: pointer; transition: transform .1s; }
+.swatches button:hover { transform: scale(1.15); }

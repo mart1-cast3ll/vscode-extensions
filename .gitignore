@@ -1,0 +1,16 @@
+# Build output
+dist/
+out/
+*.vsix
+
+# Dependencies and test runs
+node_modules/
+.vscode-test/
+
+# Local tooling
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
