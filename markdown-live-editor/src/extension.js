@@ -25,16 +25,32 @@ class MarkdownLiveEditorProvider {
   }
 }
 
+const isMarkdown = (uri) => !!uri && /\.(md|markdown)$/i.test(uri.path);
+
+// Explorer/title menus pass the file; from the palette, a keybinding or the built-in preview
+// there is none, so fall back to the active tab, then any visible Markdown editor.
+function findMarkdownUri() {
+  const editor = vscode.window.activeTextEditor;
+  if (editor && (editor.document.languageId === 'markdown' || isMarkdown(editor.document.uri))) return editor.document.uri;
+  const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
+  const tabUri = tab && tab.input && tab.input.uri;
+  if (isMarkdown(tabUri)) return tabUri;
+  const visible = vscode.window.visibleTextEditors.find((e) => e.document.languageId === 'markdown');
+  return visible ? visible.document.uri : null;
+}
+
 async function openCommand(uri) {
   try {
-    if (!(uri instanceof vscode.Uri)) {
-      const editor = vscode.window.activeTextEditor;
-      uri = editor && editor.document.languageId === 'markdown' ? editor.document.uri : null;
-    }
+    if (!(uri instanceof vscode.Uri)) uri = findMarkdownUri();
     if (!uri) {
-      vscode.window.showInformationMessage('Open or select a Markdown file first.');
-      return;
+      const picked = await vscode.window.showOpenDialog({
+        canSelectMany: false,
+        openLabel: 'Open in Markdown Live Editor',
+        filters: { Markdown: ['md', 'markdown'] },
+      });
+      uri = picked && picked[0];
     }
+    if (!uri) return;
     await vscode.commands.executeCommand('vscode.openWith', uri, VIEW_TYPE);
   } catch (error) {
     log.fail('Could not open Markdown Live Editor', error);

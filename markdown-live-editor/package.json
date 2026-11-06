@@ -2,7 +2,7 @@
   "name": "markdown-live-editor",
   "displayName": "Markdown Live Editor",
   "description": "Read Markdown as a rendered page and edit it in place: click any block to change it, toolbar formatting, clickable task lists and an outline.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "mart1-cast3ll",
   "license": "MIT",
   "repository": {
@@ -49,18 +49,45 @@
         "icon": "$(book)"
       }
     ],
+    "keybindings": [
+      {
+        "command": "markdownLive.open",
+        "key": "ctrl+shift+alt+v",
+        "mac": "cmd+shift+alt+v",
+        "when": "(resourceLangId == markdown || resourceExtname =~ /^\\.(md|markdown)$/i || activeWebviewPanelId == 'markdown.preview') && activeCustomEditorId != markdownLive.editor"
+      }
+    ],
     "menus": {
       "editor/title": [
         {
           "command": "markdownLive.open",
-          "when": "resourceLangId == markdown && activeCustomEditorId != markdownLive.editor",
+          "when": "(resourceLangId == markdown || resourceExtname =~ /^\\.(md|markdown)$/i) && activeCustomEditorId != markdownLive.editor",
+          "group": "navigation@-100"
+        },
+        {
+          "command": "markdownLive.open",
+          "when": "activeWebviewPanelId == 'markdown.preview'",
+          "group": "navigation@-100"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "markdownLive.open",
+          "when": "resourceLangId == markdown || resourceExtname =~ /^\\.(md|markdown)$/i",
+          "group": "1_open"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "markdownLive.open",
+          "when": "editorLangId == markdown",
           "group": "navigation"
         }
       ],
       "explorer/context": [
         {
           "command": "markdownLive.open",
-          "when": "resourceLangId == markdown",
+          "when": "resourceLangId == markdown || resourceExtname =~ /^\\.(md|markdown)$/i",
           "group": "navigation"
         }
       ]

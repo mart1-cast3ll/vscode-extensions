@@ -50,7 +50,10 @@ Open a Markdown file in the editor:
 | Where | How |
 | --- | --- |
 | Explorer | Right-click a `.md` file → **Open in Markdown Live Editor** |
-| Editor title bar | With a Markdown file open, click the book icon |
+| Editor title bar | With a Markdown file (or the built-in preview) open, click the book icon. If the bar is narrow it may be under `⋯` |
+| Tab or editor | Right-click the tab or inside the text → **Open in Markdown Live Editor** |
+| Keyboard | `Ctrl+Shift+Alt+V` (`Cmd+Shift+Alt+V` on macOS) |
+| Command Palette | **Markdown: Open in Markdown Live Editor** |
 | Any file | **Open With…** → **Markdown Live Editor** (can be set as default for `*.md`) |
 
 ### Example: tick a task and add a row to a table
